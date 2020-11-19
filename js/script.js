@@ -24,3 +24,27 @@ const movieDB = {
     ]
 };
 
+const promo = document.querySelectorAll('.promo__adv img');
+const genre = document.querySelector('.promo__genre');
+const promoBg = document.querySelector('.promo__bg');
+const promoItem = document.querySelector('.promo__interactive-list');
+
+
+// Удаляем рекламу
+for(let i = 0; i<3; i++)
+{
+promo[i].remove();
+}
+// Заменяем Комедию на Драму
+genre.textContent = "Драма";
+// Изменяем Bg
+promoBg.style.backgroundImage = 'url("img/bg.jpg")';
+// Удаляем не нужный Html код
+promoItem.innerHTML = '';
+// Сортируем Фильмы
+movieDB.movies.sort();
+// Перебираем фильмы
+movieDB.movies.forEach((film, i) => {
+    promoItem.innerHTML += `<li class="promo__interactive-item">${++i}: ${film}<div class="delete"></div></li>`;
+});
+
